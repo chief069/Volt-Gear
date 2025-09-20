@@ -1,17 +1,14 @@
-# Use official PHP image with Debian (so we can install extensions)
 FROM php:8.2-cli
 
-# Install mysqli extension
-RUN docker-php-ext-install mysqli
+# Install system dependencies and mysqli extension
+RUN apt-get update && apt-get install -y \
+        default-mysql-client \
+        libmariadb-dev \
+    && docker-php-ext-install mysqli \
+    && rm -rf /var/lib/apt/lists/*
 
-# Set working directory
 WORKDIR /var/www/html
-
-# Copy all project files
 COPY . .
 
-# Expose port 10000
 EXPOSE 10000
-
-# Start PHP built-in server
 CMD ["php", "-S", "0.0.0.0:10000"]

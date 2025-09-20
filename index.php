@@ -6,10 +6,11 @@ session_start(); // Start the session
 $isLoggedIn = isset($_SESSION['customerID']); // Assuming 'user_id' is set in the session after login
 
 // Database credentials (place this at the top of your file, right after <?php)
-$servername = "localhost";
+$servername = "host.docker.internal";
 $username = "root";
 $password = "";
 $db = "voltgear";
+$port = 3307;
 
 // Create connection (use the same variable names as defined above)
 $conn = new mysqli($servername, $username, $password, $db,3307);
@@ -17,6 +18,8 @@ $conn = new mysqli($servername, $username, $password, $db,3307);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
+echo "✅ Connected successfully to MySQL on host!";
 
 // Fetch cart items for the logged-in user
 $cartItems = [];
