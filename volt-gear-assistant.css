@@ -1,0 +1,485 @@
+/* VOLT GEAR AI Assistant - Main Styling */
+:root {
+    --volt-primary: #00b4ff;
+    --volt-dark: #131820;
+    --volt-light: #f9f9f9;
+    --volt-accent: #ff6b00;
+    --volt-text: #e0e0e0;
+    --volt-secondary: #2c3e50;
+    --volt-success: #00d26a;
+    --volt-error: #ff3a30;
+    --volt-border-radius: 8px;
+    --volt-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --volt-transition: all 0.3s ease;
+  }
+  
+  /* Chat Container */
+  .chat-container {
+    width: 380px;
+    height: 600px;
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    background-color: var(--volt-dark);
+    border-radius: 12px;
+    box-shadow: var(--volt-shadow);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 999;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--volt-transition);
+  }
+  
+  /* Chat Header */
+  .chat-header {
+    background: linear-gradient(135deg, var(--volt-primary), #0080cc);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .header-title img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .header-title h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  .header-actions {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .header-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    opacity: 0.8;
+    transition: var(--volt-transition);
+  }
+  
+  .header-button:hover {
+    opacity: 1;
+  }
+  
+  /* Chat Messages Area */
+  .chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--volt-primary) transparent;
+  }
+  
+  .chat-messages::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  .chat-messages::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .chat-messages::-webkit-scrollbar-thumb {
+    background-color: var(--volt-primary);
+    border-radius: 10px;
+  }
+  
+  /* Message Bubbles */
+  .message {
+    max-width: 85%;
+    padding: 12px 16px;
+    border-radius: var(--volt-border-radius);
+    animation: fadeIn 0.3s ease;
+    line-height: 1.4;
+    font-size: 14px;
+  }
+  
+  .user-message {
+    align-self: flex-end;
+    background-color: var(--volt-primary);
+    color: white;
+    border-bottom-right-radius: 2px;
+    box-shadow: 0 2px 5px rgba(0, 180, 255, 0.2);
+  }
+  
+  .assistant-message {
+    align-self: flex-start;
+    background-color: var(--volt-secondary);
+    color: var(--volt-text);
+    border-bottom-left-radius: 2px;
+  }
+  
+  .message-time {
+    font-size: 10px;
+    margin-top: 5px;
+    opacity: 0.7;
+    text-align: right;
+  }
+  
+  .typing-indicator {
+    align-self: flex-start;
+    padding: 12px 16px;
+    background-color: var(--volt-secondary);
+    color: var(--volt-text);
+    border-radius: var(--volt-border-radius);
+    border-bottom-left-radius: 2px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .typing-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--volt-text);
+    border-radius: 50%;
+    animation: typingAnimation 1.5s infinite ease-in-out;
+  }
+  
+  .typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  
+  /* Chat Input Area */
+  .chat-input-container {
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .chat-input {
+    flex: 1;
+    padding: 12px 15px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--volt-secondary);
+    color: var(--volt-text);
+    font-size: 14px;
+    outline: none;
+    transition: var(--volt-transition);
+  }
+  
+  .chat-input:focus {
+    border-color: var(--volt-primary);
+    box-shadow: 0 0 0 2px rgba(0, 180, 255, 0.25);
+  }
+  
+  .chat-input::placeholder {
+    color: rgba(224, 224, 224, 0.5);
+  }
+  
+  .send-button {
+    background-color: var(--volt-primary);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--volt-transition);
+  }
+  
+  .send-button:hover {
+    background-color: #0090cc;
+    transform: scale(1.05);
+  }
+  
+  .send-button:active {
+    transform: scale(0.98);
+  }
+  
+  .send-button i {
+    font-size: 16px;
+  }
+  
+  /* API Status Indicator */
+  .api-status {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--volt-error);
+    transition: var(--volt-transition);
+  }
+  
+  .api-status.connected {
+    background-color: var(--volt-success);
+  }
+  
+  /* API Key Configuration Button - Already in JS but styled here */
+  #admin-key-config {
+    position: fixed;
+    bottom: 20px;
+    right: 90px;
+    width: 40px;
+    height: 40px;
+    background: var(--volt-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    cursor: pointer;
+    color: var(--volt-text);
+    opacity: 0.7;
+    z-index: 1000;
+    transition: var(--volt-transition);
+  }
+  
+  #admin-key-config:hover {
+    opacity: 1;
+    background-color: var(--volt-primary);
+    transform: scale(1.1);
+  }
+  
+  /* Chat Toggle Button */
+  .chat-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--volt-primary), #0080cc);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--volt-shadow);
+    z-index: 1000;
+    transition: var(--volt-transition);
+  }
+  
+  .chat-toggle:hover {
+    transform: scale(1.1);
+  }
+  
+  .chat-toggle i {
+    color: white;
+    font-size: 22px;
+    transition: var(--volt-transition);
+  }
+  
+  .chat-toggle.active i {
+    transform: rotate(180deg);
+  }
+  
+  /* Product Cards for Recommendations */
+  .product-recommendation {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border-radius: var(--volt-border-radius);
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--volt-transition);
+  }
+  
+  .product-recommendation:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .product-image {
+    height: 120px;
+    background-color: var(--volt-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .product-info {
+    padding: 12px;
+  }
+  
+  .product-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 5px;
+    color: var(--volt-primary);
+  }
+  
+  .product-price {
+    font-size: 13px;
+    color: var(--volt-text);
+    margin: 0 0 8px;
+  }
+  
+  .product-action {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .product-button {
+    flex: 1;
+    padding: 6px 0;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--volt-transition);
+  }
+  
+  .view-button {
+    background-color: var(--volt-secondary);
+    color: var(--volt-text);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .buy-button {
+    background-color: var(--volt-accent);
+    color: white;
+    border: none;
+  }
+  
+  .view-button:hover {
+    background-color: #3a4e63;
+  }
+  
+  .buy-button:hover {
+    background-color: #e55f00;
+  }
+  
+  /* Quick Action Buttons */
+  .quick-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 5px;
+  }
+  
+  .quick-action-button {
+    background-color: var(--volt-secondary);
+    color: var(--volt-text);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 6px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: var(--volt-transition);
+  }
+  
+  .quick-action-button:hover {
+    background-color: var(--volt-primary);
+    color: white;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes typingAnimation {
+    0%, 100% {
+      transform: translateY(0);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translateY(-5px);
+      opacity: 1;
+    }
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 480px) {
+    .chat-container {
+      width: 100%;
+      height: 100%;
+      bottom: 0;
+      right: 0;
+      border-radius: 0;
+    }
+    
+    .chat-toggle {
+      bottom: 20px;
+      right: 20px;
+    }
+    
+    #admin-key-config {
+      bottom: 20px;
+      right: 80px;
+    }
+  }
+  
+  /* Dark Mode Toggle */
+  .dark-mode-toggle {
+    background: none;
+    border: none;
+    color: var(--volt-text);
+    cursor: pointer;
+    font-size: 16px;
+    opacity: 0.8;
+    transition: var(--volt-transition);
+  }
+  
+  .dark-mode-toggle:hover {
+    opacity: 1;
+    color: var(--volt-primary);
+  }
+  
+  /* Connection Status Message */
+  .connection-status {
+    text-align: center;
+    padding: 8px;
+    font-size: 12px;
+    color: var(--volt-text);
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: var(--volt-border-radius);
+    margin: 5px 0;
+  }
+  
+  .connection-status.offline {
+    color: var(--volt-error);
+  }
+  
+  .connection-status.online {
+    color: var(--volt-success);
+  }
